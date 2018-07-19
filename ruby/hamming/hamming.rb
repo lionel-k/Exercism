@@ -7,6 +7,6 @@ class Hamming
     if strand1.length != strand2.length
       raise ArgumentError, 'The length of the 2 strands should be equal'
     end
-    (0...strand1.length).to_a.count { |i| strand1[i] != strand2[i] }
+    0.upto(strand1.length).count { |i| strand1[i] != strand2[i] }
   end
 end
