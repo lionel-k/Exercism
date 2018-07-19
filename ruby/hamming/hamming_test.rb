@@ -69,12 +69,12 @@ class HammingTest < Minitest::Test
   end
 
   def test_disallow_first_strand_longer
-    skip
+    # skip
     assert_raises(ArgumentError) { Hamming.compute('AATG', 'AAA') }
   end
 
   def test_disallow_second_strand_longer
-    skip
+    # skip
     assert_raises(ArgumentError) { Hamming.compute('ATA', 'AGTG') }
   end
 
