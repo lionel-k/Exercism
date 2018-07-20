@@ -1,7 +1,8 @@
-# Calculate the moment when someone has lived for 109 seconds.
+# Calculate the moment when someone has lived for 10^9 seconds.
 class Gigasecond
+  ELAPSED_TIME = 1_000_000_000
   def self.from(time)
-    time + 1_000_000_000
+    time + ELAPSED_TIME
   end
 end
 
