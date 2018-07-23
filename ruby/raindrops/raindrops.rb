@@ -7,12 +7,12 @@
 # If the number does not have 3, 5, or 7 as a factor,
 # just pass the number's digits straight through.
 class Raindrops
-  # FACTORS = [3, 5, 7].freeze
+  FACTORS = { 3 => 'Pling', 5 => 'Plang', 7 => 'Plong' }.freeze
+
   def self.convert(number)
-    result = ''
-    result += 'Pling' if (number % 3).zero?
-    result += 'Plang' if (number % 5).zero?
-    result += 'Plong' if (number % 7).zero?
+    result = FACTORS.collect do |factor, output|
+      output if (number % factor).zero?
+    end.join
     result = number.to_s if result == ''
     result
   end
