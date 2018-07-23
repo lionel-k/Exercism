@@ -1,6 +1,8 @@
 # Given a phrase, count the occurrences of each word in that phrase.
 class Phrase
-  WORD_REGEX = '\w+\'*+\w+|\d'.freeze
+  # WORD_REGEX = '\w+\'*+\w+|\d'
+  WORD_REGEX = '\w+'
+
   def initialize(phrase)
     @words = phrase.downcase.scan(/#{WORD_REGEX}/)
   end
