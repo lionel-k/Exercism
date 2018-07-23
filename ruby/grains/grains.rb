@@ -2,11 +2,12 @@
 # given that the number on each square doubles.
 class Grains
   CHESS_SIZE = 64
+  ERROR_MESSAGE = "Square number should be included between 1 and #{CHESS_SIZE}"
 
   class << self
     def square(square_number)
       if non_existing_square_number(square_number)
-        raise ArgumentError, 'Square number should be included between 0 and 64'
+        raise ArgumentError, ERROR_MESSAGE
       end
       (2**square_number) / 2
     end
