@@ -8,20 +8,27 @@
 # He answers 'Whatever.' to anything else.
 class Bob
   def self.hey(remark)
-    return 'Calm down, I know what I\'m doing!' if is_being_yelled_at_by(remark) && is_being_questionned_by(remark)
-    return 'Sure.' if is_being_questionned_by(remark)
-    return 'Whoa, chill out!' if remark.upcase == remark || remark[-1] == '!'
+    return 'Calm down, I know what I\'m doing!' if being_questionned_by(remark) && being_yelled_at_by(remark)
+    return 'Sure.' if being_questionned_by(remark)
+    # return 'Whoa, chill out!' if remark.upcase == remark || remark[-1] == '!'
+    return 'Whoa, chill out!' if being_yelled_at_by(remark)
     'Whatever.'
   end
 
-  private
+  # private
 
-  def self.is_being_questionned_by(remark)
+  def self.being_questionned_by(remark)
     remark[-1] == '?'
   end
 
-  def self.is_being_yelled_at_by(remark)
+  def self.being_yelled_at_by(remark)
+    # remark.gsub
+    # remark.gsub!(/\d/, "")
     remark.upcase == remark
+  end
+
+  def self.being_said_nothing_by(remark)
+    remark == ""
   end
 end
 
