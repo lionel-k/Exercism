@@ -1,10 +1,14 @@
 # Given a phrase, count the occurrences of each word in that phrase.
 class Phrase
   # WORD_REGEX = '\w+\'*+\w+|\d'
-  WORD_REGEX = '\w+'
+  # WORD_REGEX = '\w+'
+  # WORD_REGEX = /(\w|')+/
+  # WORD_REGEX = /\w+'?+\w+|\d/
+  # WORD_REGEX = /\w+'?\w?/
+  WORD_REGEX = /\w+'?\w+|\d/
 
   def initialize(phrase)
-    @words = phrase.downcase.scan(/#{WORD_REGEX}/)
+    @words = phrase.downcase.scan(WORD_REGEX)
   end
 
   def word_count
