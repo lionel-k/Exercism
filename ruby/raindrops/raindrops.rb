@@ -13,8 +13,8 @@ class Raindrops
     result = FACTORS.collect do |factor, output|
       output if (number % factor).zero?
     end.join
-    result = number.to_s if result == ''
-    result
+    return result unless result.empty?
+    number.to_s
   end
 end
 
