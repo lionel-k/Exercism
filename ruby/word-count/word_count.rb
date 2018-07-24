@@ -1,20 +1,13 @@
 # Given a phrase, count the occurrences of each word in that phrase.
 class Phrase
-  # WORD_REGEX = '\w+\'*+\w+|\d'
-  # WORD_REGEX = '\w+'
-  # WORD_REGEX = /(\w|')+/
-  # WORD_REGEX = /\w+'?+\w+|\d/
-  # WORD_REGEX = /\w+'?\w?/
-  WORD_REGEX = /\w+'?\w+|\d/
+  WORD_REGEX = /\b[\w|']+\b/i
 
   def initialize(phrase)
     @words = phrase.downcase.scan(WORD_REGEX)
   end
 
   def word_count
-    @words.inject({}) do |result, word|
-      result.merge(word => @words.count(word))
-    end
+    @words.each_with_object(Hash.new(0)) { |word, counts| counts[word] += 1 }
   end
 end
 
