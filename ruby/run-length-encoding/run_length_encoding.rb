@@ -26,7 +26,21 @@ class RunLengthEncoding
     encode
   end
 
-  def self.decode
+  def self.decode(input)
+    return '' if input.empty?
+    # (\d+)
+    counts = input.scan(/\d+/)
+    return input if counts.empty?
+    substrings = input.scan(/[a-zA-Z ]+/)
+    decode = ""
+    counts.each_with_index do |c, index|
+      # print substrings[index][0] * c
+      # puts substrings[index][0] * c.to_i
+      # puts c
+      decode << (substrings[index][0] * c.to_i + substrings[index][1..-1])
+    end
+    # ([a-zA-Z ]+)
+    decode
   end
 end
 
@@ -38,6 +52,14 @@ end
 
 input = 'WWWWWWWWWWWWBWWWWWWWWWWWWBBBWWWWWWWWWWWWWWWWWWWWWWWWB'
 # input = '  hsqq qww  '
-output = '12WB12W3B24WB'
-input = ''
-print RunLengthEncoding.encode(input)
+# output = '12WB12W3B24WB'
+# input = ''
+# print RunLengthEncoding.encode(input)
+# RunLengthEncoding.encode(input)
+
+input = 'XYZ'
+# input = '2A3B4C'
+# input = '12WB12W3B24WB'
+# input = '2 hs2q q2w2 '
+# output = '  hsqq qww  '
+RunLengthEncoding.decode(input)
