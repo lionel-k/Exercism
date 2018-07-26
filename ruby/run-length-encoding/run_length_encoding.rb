@@ -2,10 +2,10 @@
 class RunLengthEncoding
   def self.encode(input)
     return '' if input.empty?
-    result = []
+    initials = []
     counts = []
     current = input[0]
-    result << current
+    initials << current
     i = 0
     counts[i] = 0
     input.each_char do |chr|
@@ -15,15 +15,13 @@ class RunLengthEncoding
         i += 1
         counts[i] = 1
         current = chr
-        result << current
+        initials << current
       end
     end
 
-    encode = ""
-    result.each_with_index do |chr, index|
-      encode << (counts[index] == 1 ? chr : "#{counts[index]}#{chr}")
-    end
-    encode
+    initials.each_with_index.map do |chr, index|
+      (counts[index] == 1 ? chr : "#{counts[index]}#{chr}")
+    end.join
   end
 
   def self.decode(input)
@@ -32,30 +30,28 @@ class RunLengthEncoding
     counts = input.scan(/\d+/)
     return input if counts.empty?
 
-    substrings = input.scan(/[a-zA-Z ]+/)
+    initials = input.scan(/[a-zA-Z ]+/)
 
     counts.each_with_index.map do |c, index|
-      (substrings[index][0] * c.to_i + substrings[index][1..-1])
+      (initials[index][0] * c.to_i + initials[index][1..-1])
     end.join
   end
 end
-
 
 module BookKeeping
   VERSION = 3
 end
 
-
 input = 'WWWWWWWWWWWWBWWWWWWWWWWWWBBBWWWWWWWWWWWWWWWWWWWWWWWWB'
 # input = '  hsqq qww  '
 # output = '12WB12W3B24WB'
 # input = ''
-# print RunLengthEncoding.encode(input)
+print RunLengthEncoding.encode(input)
 # RunLengthEncoding.encode(input)
 
 # input = 'XYZ'
 # input = '2A3B4C'
-input = '12WB12W3B24WB'
+# input = '12WB12W3B24WB'
 # input = '2 hs2q q2w2 '
 # output = '  hsqq qww  '
-RunLengthEncoding.decode(input)
+# RunLengthEncoding.decode(input)
