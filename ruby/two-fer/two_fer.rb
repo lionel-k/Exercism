@@ -8,6 +8,3 @@ end
 module BookKeeping
   VERSION = 1
 end
-
-print TwoFer.two_fer('Alice')
-print TwoFer.two_fer
