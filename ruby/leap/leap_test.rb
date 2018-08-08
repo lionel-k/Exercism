@@ -3,14 +3,14 @@ require_relative 'leap'
 require 'date'
 
 # Common test data version: 1.1.0 7f4d0d8
-# class Date
-#   def leap?
-#     raise RuntimeError, "Implement this yourself instead of using Ruby's implementation."
-#   end
+class Date
+  def leap?
+    raise RuntimeError, "Implement this yourself instead of using Ruby's implementation."
+  end
 
-#   alias gregorian_leap? leap?
-#   alias julian_leap? leap?
-# end
+  alias gregorian_leap? leap?
+  alias julian_leap? leap?
+end
 
 class YearTest < Minitest::Test
   def test_year_not_divisible_by_4_common_year
@@ -33,15 +33,15 @@ class YearTest < Minitest::Test
     assert Year.leap?(2000), "Expected 'true', 2000 is a leap year."
   end
 
-  def test_years_with_date_year_method
-    start_year = 1581
-    end_year = 1600
-    expected = start_year.upto(end_year).map do |year|
-      Date.new(year).leap?
-    end
+  # def test_years_with_date_year_method
+  #   start_year = 1581
+  #   end_year = 5000
+  #   expected = start_year.upto(end_year).map do |year|
+  #     Date.new(year).leap?
+  #   end
 
-    assert_equal expected, start_year.upto(end_year).map { |year| Year.leap?(year) }
-  end
+  #   assert_equal expected, start_year.upto(end_year).map { |year| Year.leap?(year) }
+  # end
 
   # Problems in exercism evolve over time, as we find better ways to ask
   # questions.
