@@ -1,5 +1,6 @@
 require 'minitest/autorun'
 require_relative 'leap'
+require 'date'
 
 # Common test data version: 1.1.0 7f4d0d8
 class Date
@@ -28,8 +29,18 @@ class YearTest < Minitest::Test
   end
 
   def test_year_divisible_by_400_leap_year
-    # skiprak
+    # skip
     assert Year.leap?(2000), "Expected 'true', 2000 is a leap year."
+  end
+
+  def test_years_with_date_year_method
+    start_year = 1581
+    end_year = 1600
+    expected = start_year.upto(end_year).map do |year|
+      Date.new(year).leap?
+    end
+
+    assert_equal expected, start_year.upto(end_year).map { |year| Year.leap?(year) }
   end
 
   # Problems in exercism evolve over time, as we find better ways to ask
