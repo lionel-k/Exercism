@@ -64,13 +64,13 @@ class BobTest < Minitest::Test
   end
 
   def test_only_numbers
-    skip
+    # skip
     remark = "1, 2, 3"
     assert_equal "Whatever.", Bob.hey(remark), %q{Bob hears "1, 2, 3", and..}
   end
 
   def test_question_with_only_numbers
-    skip
+    # skip
     remark = "4?"
     assert_equal "Sure.", Bob.hey(remark), %q{Bob hears "4?", and..}
   end
@@ -94,7 +94,7 @@ class BobTest < Minitest::Test
   end
 
   def test_non_letters_with_question
-    skip
+    # skip
     remark = ":) ?"
     assert_equal "Sure.", Bob.hey(remark), %q{Bob hears ":) ?", and..}
   end
@@ -112,43 +112,43 @@ class BobTest < Minitest::Test
   end
 
   def test_prolonged_silence
-    skip
+    # skip
     remark = "          "
     assert_equal "Fine. Be that way!", Bob.hey(remark), %q{Bob hears "          ", and..}
   end
 
   def test_alternate_silence
-    skip
+    # skip
     remark = "\t\t\t\t\t\t\t\t\t\t"
     assert_equal "Fine. Be that way!", Bob.hey(remark), %q{Bob hears "\t\t\t\t\t\t\t\t\t\t", and..}
   end
 
   def test_multiple_line_question
-    skip
+    # skip
     remark = "\nDoes this cryogenic chamber make me look fat?\nno"
     assert_equal "Whatever.", Bob.hey(remark), %q{Bob hears "\nDoes this cryogenic chamber make me look fat?\nno", and..}
   end
 
   def test_starting_with_whitespace
-    skip
+    # skip
     remark = "         hmmmmmmm..."
     assert_equal "Whatever.", Bob.hey(remark), %q{Bob hears "         hmmmmmmm...", and..}
   end
 
   def test_ending_with_whitespace
-    skip
+    # skip
     remark = "Okay if like my  spacebar  quite a bit?   "
     assert_equal "Sure.", Bob.hey(remark), %q{Bob hears "Okay if like my  spacebar  quite a bit?   ", and..}
   end
 
   def test_other_whitespace
-    skip
+    # skip
     remark = "\n\r \t"
     assert_equal "Fine. Be that way!", Bob.hey(remark), %q{Bob hears "\n\r \t", and..}
   end
 
   def test_non_question_ending_with_whitespace
-    skip
+    # skip
     remark = "This is a statement ending with whitespace      "
     assert_equal "Whatever.", Bob.hey(remark), %q{Bob hears "This is a statement ending with whitespace      ", and..}
   end
@@ -171,7 +171,7 @@ class BobTest < Minitest::Test
   # http://ruby-doc.org/docs/ruby-doc-bundle/UsersGuide/rg/constants.html
 
   def test_bookkeeping
-    skip
+    # skip
     assert_equal 2, BookKeeping::VERSION
   end
 end
