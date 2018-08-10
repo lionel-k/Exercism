@@ -6,7 +6,23 @@
 # Given a number n, return the number of steps required to reach 1.
 
 class CollatzConjecture
-  def self.steps()
-
+  ERROR_MESSAGE = 'The argument must be positive.'
+  def self.steps(n)
+    raise ArgumentError, ERROR_MESSAGE if n <= 0
+    steps = 0
+    while n != 1
+      n = n.even? ? n/2 : 3*n + 1
+      steps += 1
+    end
+    steps
   end
 end
+
+
+module BookKeeping
+  VERSION = 1 # Where the version number matches the one in the test.
+end
+
+
+# puts CollatzConjecture.steps(1)
+# puts CollatzConjecture.steps(0)
