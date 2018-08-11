@@ -12,16 +12,7 @@ class Alphametics
       next if leading_digits_zero?([converted_left, converted_right])
       sum_left = converted_left.inject { |sum, n| sum.to_i + n.to_i }
       sum_right = converted_right.first.to_i
-      # sum_right = convert_operand([right], dict)
-      # print converted_left
-      # print converted_right
-      # puts leading_digits_zero?([converted_left, converted_right])
-      if sum_left == sum_right # && !leading_digits_zero?([converted_left, converted_right])
-        # print converted_left
-        # print converted_right
-        # puts leading_digits_zero?([converted_left, converted_right])
-        return dict
-      end
+      return dict if sum_left == sum_right
     end
     {}
   end
@@ -35,15 +26,9 @@ class Alphametics
   end
 
   def self.leading_digits_zero?(operands)
-    # right[0].zero? && lefts.inject(true) {|result, left| result && left[0].zero?}
-    # res = false
-    # operands.flatten.each do |operand|
-      # print operand[0].to_i.zero?
-      # res = res || operand[0].to_i.zero?
-    # end
-    # print res
-    # res
-    operands.flatten.inject(false) {|result, operand| result || operand[0].to_i.zero?}
+    operands.flatten.inject(false) do |result, operand|
+      result || operand[0].to_i.zero?
+    end
   end
 end
 
@@ -55,11 +40,11 @@ end
 # ball                   guess[1]*1000 + guess[0]*100 + guess[4]*10 + guess[4]
 # games  guess[3]*10000 + guess[0]*1000 + guess[5]*100 + guess[2]*10 + guess[6]
 
-input = 'I + BB == ILL'
+# input = 'I + BB == ILL'
 # input = 'ACA + DD == BD'
 # expected = { 'B' => 9, 'I' => 1, 'L' => 0 }
 # assert_equal expected,
-Alphametics.solve(input)
+# Alphametics.solve(input)
 
 # def convert(char, dict)
 #   dict[char]
