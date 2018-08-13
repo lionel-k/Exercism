@@ -15,8 +15,3 @@ class Series
     end
   end
 end
-
-# series = Series.new('98273463')
-# series = Series.new('49142')
-# expected = ['98', '82', '27', '73', '34', '46', '63']
-# print series.slices(6)
