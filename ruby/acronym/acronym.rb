@@ -1,7 +1,7 @@
 # Convert a phrase to its acronym.
 class Acronym
   def self.abbreviate(phrase)
-    phrase.upcase.scan(/\b[A-Z]/).join
+    phrase.scan(/\b[a-zA-Z]/).join.upcase
   end
 end
 
