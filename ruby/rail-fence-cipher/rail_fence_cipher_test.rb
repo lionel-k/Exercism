@@ -59,6 +59,13 @@ class RailFenceCipherTest < Minitest::Test
                  RailFenceCipher.decode('TEITELHDVLSNHDTISEIIEA', 3)
   end
 
+  def test_encode_decode_with_three_rails
+    skip
+    input = 'WEAREDISCOVEREDFLEEATONCE'
+    assert_equal input,
+                RailFenceCipher.decode(RailFenceCipher.encode(input, 3), 3)
+  end
+
   def test_bookkeeping
     skip
     assert_equal 1, RailFenceCipher::VERSION
